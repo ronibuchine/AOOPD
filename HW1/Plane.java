@@ -1,4 +1,4 @@
-public class Plane implements Movable, Comparable {
+public class Plane implements Movable, Comparable{
     public static final int HEIGHT_LIMIT = 1500;
     int licenceNumber;
     Location source, destination;
@@ -12,14 +12,13 @@ public class Plane implements Movable, Comparable {
     }
 
     @Override
-    public String toString() {
-        return String.format("licence = %d, source = %s, destination = %s, maxHeight = %d", licenceNumber, source,
-                destination, maximalHeight);
-    }
-
+	public String toString() {
+		return String.format("licence = %d, source = %s, destination = %s, maxHeight = %d",
+				licenceNumber, source, destination, maximalHeight);
+	}
+	
     @Override
     public String getType() {
-
         return "Plane";
     }
 
@@ -40,26 +39,23 @@ public class Plane implements Movable, Comparable {
 
     @Override
     public String getCurrentLocation() {
-        return source.name();
+        //the plane is currently located at it's source
+        return String.format("%s", source);
     }
 
     @Override
     public void move() {
+        //swap the source and destination using a temp value
         Location temp = source;
         source = destination;
         destination = temp;
     }
 
     @Override
+    //It is presumed that the Object passed is of type Plane
     public int compareTo(Object o) {
-
-        // compares the maximal flight altitude between objects
-        Plane plane = (Plane) o;
-
-        if (this.maximalHeight > plane.maximalHeight)
-            return 1;
-        if (this.maximalHeight < plane.maximalHeight)
-            return -1;
-        return 0;
+        //o is cast to a Plane and the maximalHeight difference between o and p is returned
+        Plane p = (Plane)o;
+        return this.maximalHeight - p.maximalHeight;
     }
 }
