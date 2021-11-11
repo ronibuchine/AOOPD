@@ -1,27 +1,35 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-public class BitArray implements Clusterable<BitArray>{
+public class BitArray implements Clusterable<BitArray> {
 	private ArrayList<Boolean> bits;
 
-	public BitArray(String str){
-		// TODO: Complete
+	public BitArray(String str) {
+		this.bits = new ArrayList<>();
+		ArrayList<String> words = new ArrayList<>();
+		words.asList(str.split(','));
+		this.bits = words.stream().map(x -> x.equals("true") ? 1 : 0).collect(Collectors.toList());
 	}
+
 	public BitArray(boolean[] bits) {
-		// TODO: Complete
+		this.bits = Arrays.asList(bits);
 	}
 
 	@Override
 	public double distance(BitArray other) {
-		// TODO: Complete
-		return 0;
+		IntStream indices = new IntStream<>().range(this.bits.size());
+		return indices.stream().map(i -> this.bits.get(i) == other.bits.get(i) ? 1 : 0).sum();
 	}
 
 	public static Set<BitArray> readClusterableSet(String path) throws IOException {
 		// TODO: Complete. If the file contains bitarrays of different lengths,
-		//  retain only those of maximal length
+		// retain only those of maximal length
 		return null;
 	}
 
@@ -32,8 +40,10 @@ public class BitArray implements Clusterable<BitArray>{
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
 		BitArray bitArray = (BitArray) o;
 		return bits.equals(bitArray.bits);
 	}
