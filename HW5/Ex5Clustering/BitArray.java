@@ -1,10 +1,13 @@
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -32,9 +35,18 @@ public class BitArray implements Clusterable<BitArray> {
 	}
 
 	public static Set<BitArray> readClusterableSet(String path) throws IOException {
-		// TODO: Complete. If the file contains bitarrays of different lengths,
-		// retain only those of maximal length
-		return null;
+
+		Stream<String> readStream = Files.lines(Paths.get(path));
+
+		List<Integer> lengths = readStream.map(x -> x.split(",")).map(x -> x.length).collect(Collectors.toList());
+		Integer length = Collections.max(lengths);
+
+		Set<BitArray> set = new HashSet<>();
+		readStream.map(x -> x.split(",")).filter(x -> x.length == length).map(x -> String.join(",", x))
+				.map(x -> new BitArray(x)).forEach(set::add);
+
+		return set;
+
 	}
 
 	@Override
