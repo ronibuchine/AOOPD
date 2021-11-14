@@ -19,7 +19,7 @@ public class BitArray implements Clusterable<BitArray> {
 		this.bits = new ArrayList<>();
 		ArrayList<String> words = new ArrayList<>();
 		words.addAll(Arrays.asList(str.split(",")));
-		this.bits.addAll(words.stream().map(x -> x.equals("true") ? true : false).collect(Collectors.toList()));
+		this.bits.addAll(words.stream().map(x -> x.equals("true")).collect(Collectors.toList()));
 	}
 
 	public BitArray(boolean[] bits) {
