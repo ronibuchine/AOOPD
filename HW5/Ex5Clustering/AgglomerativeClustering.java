@@ -1,4 +1,3 @@
-
 import java.util.Set;
 
 public class AgglomerativeClustering<T extends Clusterable<T>> implements Clustering<T> {
