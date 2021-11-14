@@ -1,3 +1,5 @@
+package Week05Generics.Ex5Clustering;
+
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.Set;
