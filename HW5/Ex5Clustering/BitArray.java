@@ -43,7 +43,7 @@ public class BitArray implements Clusterable<BitArray> {
 
 		Set<BitArray> set = new HashSet<>();
 		readStream.map(x -> x.split(",")).filter(x -> x.length == length).map(x -> String.join(",", x))
-				.map(x -> new BitArray(x)).forEach(set::add);
+				.map(x -> new BitArray(x)).map(x -> set.add(x));
 
 		return set;
 

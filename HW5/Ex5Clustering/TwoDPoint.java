@@ -29,7 +29,7 @@ public class TwoDPoint implements Clusterable<TwoDPoint> {
 
 		Stream<String> readStream = Files.lines(Paths.get(path));
 		Set<TwoDPoint> set = new HashSet<>();
-		readStream.forEach(x -> set.add(new TwoDPoint(x)));
+		readStream.map(x -> set.add(new TwoDPoint(x)));
 		return set;
 	}
 
