@@ -16,31 +16,48 @@ public class BitArray implements Clusterable<BitArray> {
 
 	public BitArray(String str) {
 		this.bits = new ArrayList<>();
+
+		// add each comma-seperated-value of str to an ArrayList words
 		ArrayList<String> words = new ArrayList<>();
 		words.addAll(Arrays.asList(str.split(",")));
-		this.bits.addAll(words.stream().map(x -> x.equals("true")).collect(Collectors.toList()));
+
+		// convert the Strings to boolean values and add the result to bits
+		this.bits.addAll(words.stream().map(bit -> bit.equals("true")).collect(Collectors.toList()));
 	}
 
 	public BitArray(boolean[] bits) {
 		this.bits = new ArrayList<>();
+
+		// convert the given boolean array to a stream
 		Stream<Boolean> boolStream = IntStream.range(0, bits.length).mapToObj(index -> bits[index]);
+
+		// convert the stream to a List and add the result to bits
 		this.bits.addAll(boolStream.collect(Collectors.toList()));
 	}
 
 	@Override
 	public double distance(BitArray other) {
 		IntStream indices = IntStream.range(0, this.bits.size());
-		return indices.map(i -> this.bits.get(i) == other.bits.get(i) ? 1 : 0).sum();
+
+		// every matching index is marked as 0, non=matching index marked as 1, so the sum returned is the hamming distance
+		return indices.map(i -> this.bits.get(i) == other.bits.get(i) ? 0 : 1).sum();
 	}
 
 	public static Set<BitArray> readClusterableSet(String path) throws IOException {
+
+		// read each line in the file into a stream
 		Stream<String> readStream1 = Files.lines(Paths.get(path));
+
+		// find the length of each line, and return the max
 		List<Integer> lengths = readStream1.map(line -> line.split(","))
 					.map(stringArr -> stringArr.length)
 					.collect(Collectors.toList());
 		Integer length = Collections.max(lengths);
 
+		// read each line in the file into a stream again
 		Stream<String> readStream2 = Files.lines(Paths.get(path));
+
+		// of the lines that are of the length found above, construct BitArrays from them and add them to a set
 		Set<BitArray> set = readStream2.map(line -> line.split(","))
 					.filter(stringArr -> stringArr.length == length)
 					.map(stringArr -> String.join(",", stringArr))

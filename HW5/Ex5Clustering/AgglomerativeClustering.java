@@ -13,11 +13,17 @@ public class AgglomerativeClustering<T extends Clusterable<T>> implements Cluste
 		this.threshold = threshold;
 	}
 
+	// find distance between two sets/clusters
 	public double distanceBetweenSets(Set<T> set1, Set<T> set2) {
-			Optional<SimpleEntry<T,T>> closestItemPair = set1.stream().flatMap(set1Item -> set2.stream()
-						.map(set2Item -> new SimpleEntry<T,T>(set1Item, set2Item)))
-						.min(Comparator.comparingDouble(itemPair -> itemPair.getKey().distance(itemPair.getValue())));
-			return closestItemPair.get().getKey().distance(closestItemPair.get().getValue());
+		
+		// get pair of closest T objects, where each T is in a different set
+		Optional<SimpleEntry<T,T>> closestItemPair = set1.stream()
+					.flatMap(set1Item -> set2.stream()
+					.map(set2Item -> new SimpleEntry<T,T>(set1Item, set2Item)))
+					.min(Comparator.comparingDouble(itemPair -> itemPair.getKey().distance(itemPair.getValue())));
+		
+		// return distance between the T objects in the pair
+		return closestItemPair.get().getKey().distance(closestItemPair.get().getValue());
 	}
 
 	public Set<Set<T>> clusterSet(Set<T> elements) {
