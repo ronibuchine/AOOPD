@@ -26,7 +26,6 @@ public class TwoDPoint implements Clusterable<TwoDPoint> {
 	}
 
 	public static Set<TwoDPoint> readClusterableSet(String path) throws IOException {
-
 		Stream<String> readStream = Files.lines(Paths.get(path));
 		Set<TwoDPoint> set = new HashSet<>();
 		readStream.map(x -> set.add(new TwoDPoint(x)));

@@ -35,18 +35,21 @@ public class BitArray implements Clusterable<BitArray> {
 	}
 
 	public static Set<BitArray> readClusterableSet(String path) throws IOException {
-
 		Stream<String> readStream = Files.lines(Paths.get(path));
 
-		List<Integer> lengths = readStream.map(x -> x.split(",")).map(x -> x.length).collect(Collectors.toList());
+		List<Integer> lengths = readStream.map(x -> x.split(","))
+					.map(x -> x.length)
+					.collect(Collectors.toList());
 		Integer length = Collections.max(lengths);
 
 		Set<BitArray> set = new HashSet<>();
-		readStream.map(x -> x.split(",")).filter(x -> x.length == length).map(x -> String.join(",", x))
-				.map(x -> new BitArray(x)).map(x -> set.add(x));
+		readStream.map(x -> x.split(","))
+				.filter(x -> x.length == length)
+				.map(x -> String.join(",", x))
+				.map(x -> new BitArray(x))
+				.map(x -> set.add(x));
 
 		return set;
-
 	}
 
 	@Override
