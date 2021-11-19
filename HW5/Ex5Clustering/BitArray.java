@@ -4,7 +4,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -35,19 +34,18 @@ public class BitArray implements Clusterable<BitArray> {
 	}
 
 	public static Set<BitArray> readClusterableSet(String path) throws IOException {
-		Stream<String> readStream = Files.lines(Paths.get(path));
-
-		List<Integer> lengths = readStream.map(x -> x.split(","))
-					.map(x -> x.length)
+		Stream<String> readStream1 = Files.lines(Paths.get(path));
+		List<Integer> lengths = readStream1.map(line -> line.split(","))
+					.map(stringArr -> stringArr.length)
 					.collect(Collectors.toList());
 		Integer length = Collections.max(lengths);
 
-		Set<BitArray> set = new HashSet<>();
-		readStream.map(x -> x.split(","))
-				.filter(x -> x.length == length)
-				.map(x -> String.join(",", x))
-				.map(x -> new BitArray(x))
-				.map(x -> set.add(x));
+		Stream<String> readStream2 = Files.lines(Paths.get(path));
+		Set<BitArray> set = readStream2.map(line -> line.split(","))
+					.filter(stringArr -> stringArr.length == length)
+					.map(stringArr -> String.join(",", stringArr))
+					.map(line -> new BitArray(line))
+					.collect(Collectors.toSet());
 
 		return set;
 	}
