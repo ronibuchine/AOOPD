@@ -1,9 +1,9 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TwoDPoint implements Clusterable<TwoDPoint> {
@@ -26,10 +26,12 @@ public class TwoDPoint implements Clusterable<TwoDPoint> {
 	}
 
 	public static Set<TwoDPoint> readClusterableSet(String path) throws IOException {
-
+		
+		// read each line in the file into a stream
 		Stream<String> readStream = Files.lines(Paths.get(path));
-		Set<TwoDPoint> set = new HashSet<>();
-		readStream.map(x -> set.add(new TwoDPoint(x)));
+		
+		// a TwoDPoint is constructed based on each line and added to a set
+		Set<TwoDPoint> set = readStream.map(line -> new TwoDPoint(line)).collect(Collectors.toSet());
 		return set;
 	}
 
