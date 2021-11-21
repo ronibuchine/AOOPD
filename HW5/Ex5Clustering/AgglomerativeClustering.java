@@ -6,6 +6,8 @@ import java.util.Set;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.stream.Collectors;
 
+//For seperating the TwoDPoint spiral dataset into 3 clusters, a threshold of either 2 or 3 needs to be used.
+
 public class AgglomerativeClustering<T extends Clusterable<T>> implements Clustering<T> {
 	double threshold;
 
