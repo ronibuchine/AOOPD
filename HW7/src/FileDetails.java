@@ -20,4 +20,6 @@ public abstract class FileDetails {
     public String getPath() {
         return path;
     }
+
+    public abstract void accept(FileVisitor visitor);
 }
