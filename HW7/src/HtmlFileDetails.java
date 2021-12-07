@@ -1,6 +1,7 @@
 public class HtmlFileDetails extends FileDetails {
     private int lines;
     private int size;
+    
     public HtmlFileDetails(String path, String fileName, int lines, int size){
         super(path,fileName);
         this.lines=lines;

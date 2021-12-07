@@ -11,6 +11,6 @@ public class ToppingsFactory {
             case "fe":
                 return new FriedEgg(hamburger);
         }
-        throw new RuntimeException("wrong Topping");
+        throw new RuntimeException("Not a Topping");
     }
 }

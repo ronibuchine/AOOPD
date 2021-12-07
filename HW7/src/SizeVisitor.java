@@ -1,5 +1,4 @@
 public class SizeVisitor implements FileVisitor {
-    
     private int byteSize = 0;
 
     public int getByteSize() {

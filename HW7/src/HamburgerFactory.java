@@ -11,6 +11,6 @@ public class HamburgerFactory {
             case "hm":
                 return new HomemadeHamburger();
         }
-        throw new RuntimeException("wrong Hamburger");
+        throw new RuntimeException("Not a Hamburger");
     }
 }

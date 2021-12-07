@@ -1,8 +1,11 @@
 public class StatVisitor implements FileVisitor {
     
     public void visit(DirectoryDetails dir) { 
+        
+        //use CountVisitor to count the number of files in the directory
         CountVisitor countVisitor = new CountVisitor();
         dir.accept(countVisitor);
+        
         System.out.println("Directory " + dir.getName() + " has " + countVisitor.getNumFiles() + " files.");
     }
     

@@ -1,5 +1,4 @@
 public class CountVisitor implements FileVisitor{
-    
     private int numFiles = 0;
 
     public int getNumFiles() {
