@@ -1,7 +1,9 @@
 public class StatVisitor implements FileVisitor {
     
     public void visit(DirectoryDetails dir) { 
-        System.out.println("Directory " + dir.getName() + " has " + dir.contents.size() + " files.");
+        CountVisitor countVisitor = new CountVisitor();
+        dir.accept(countVisitor);
+        System.out.println("Directory " + dir.getName() + " has " + countVisitor.getNumFiles() + " files.");
     }
     
     public void visit(DocxFileDetails doc) {

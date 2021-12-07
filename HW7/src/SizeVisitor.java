@@ -1,6 +1,10 @@
 public class SizeVisitor implements FileVisitor {
     
-    public int byteSize = 0;
+    private int byteSize = 0;
+
+    public int getByteSize() {
+        return byteSize;
+    }
     
     public void visit(DirectoryDetails dir) { }
     

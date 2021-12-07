@@ -1,6 +1,10 @@
 public class CountVisitor implements FileVisitor{
     
-    public int numFiles = 0;
+    private int numFiles = 0;
+
+    public int getNumFiles() {
+        return numFiles;
+    }
     
     public void visit(DirectoryDetails dir) { }
 
