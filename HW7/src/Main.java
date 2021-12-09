@@ -35,7 +35,7 @@ public class Main {
     }
     
     public static void fileMenu(Scanner scanner) throws IOException {
-        String path="HW7/src/files.txt";
+        String path="files.txt";
         FileDetails root= readFileDetails(path);
         System.out.println("Choose from the following options:\n" +
                 "q: quit\n" +
@@ -95,7 +95,7 @@ public class Main {
                 "ch: chips\n" +
                 "or: onion rings\n" +
                 "sa: salad\n" +
-                "fe: friedEgg");
+                "fe: fried egg");
 
         return ToppingsFactory.addTopping(scanner.nextLine(), hamburger);
     }
