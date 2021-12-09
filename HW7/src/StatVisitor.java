@@ -11,7 +11,7 @@ public class StatVisitor implements FileVisitor {
     
     public void visit(DocxFileDetails doc) {
         double average = (double)doc.getWords() / doc.getPages();
-        System.out.println("The file " + doc.getName() + " has an average of " + average + " words per page.");
+        System.out.printf("The file " + doc.getName() + " has an average of %.6f words per page.\n", average);
     }
     
     public void visit(HtmlFileDetails html) {
@@ -20,17 +20,17 @@ public class StatVisitor implements FileVisitor {
     
     public void visit(JpgFileDetails jpg) {
         double average = (double)jpg.getSize() / (jpg.getWidth() *jpg.getHeight());
-        System.out.println("The picture " + jpg.getName() + " has an average of " + average + " bytes per pixel.");
+        System.out.printf("The picture " + jpg.getName() + " has an average of %.6f bytes per pixel.\n", average);
     }
     
     public void visit(Mp3FileDetails mp3) {
         double bitrate = (double)mp3.getSize() / mp3.getLengthSec();
-        System.out.println("The bitrate of " + mp3.getName() + " is " + bitrate + " bytes per second.");
+        System.out.printf("The bitrate of " + mp3.getName() + " is %.6f bytes per second.\n", bitrate);
     }
     
     public void visit(PptxFileDetails pptx) {
         double average = (double)pptx.getSize() / pptx.getSlides();
-        System.out.println("The average slide size in Presentation " + pptx.getName() + " is " + average + ".");
+        System.out.printf("The average slide size in Presentation " + pptx.getName() + " is %.6f.\n", average);
     }
     
     public void visit(TxtFileDetails txt) {
