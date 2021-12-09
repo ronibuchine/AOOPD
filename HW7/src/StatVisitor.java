@@ -20,7 +20,7 @@ public class StatVisitor implements FileVisitor {
     
     public void visit(JpgFileDetails jpg) {
         double average = (double)jpg.getSize() / (jpg.getWidth() *jpg.getHeight());
-        System.out.printf("The picture " + jpg.getName() + " has an average of %.6f bytes per pixel.\n", average);
+        System.out.printf("The picture " + jpg.getName() + " has an average of %.6f bits per pixel.\n", average);
     }
     
     public void visit(Mp3FileDetails mp3) {
