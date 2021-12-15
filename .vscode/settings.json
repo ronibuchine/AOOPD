@@ -1,6 +1,12 @@
 {
     "java.project.sourcePaths": [
-        "HW5/Ex5Clustering",
-        "HW7/src"
+        "src"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "C:\\PathToFile\\junit-platform-console-standalone-1.6.0.jar",
+        "c:\\aspectj1.9\\lib\\aspectjrt.jar",
+        "c:\\aspectj1.9\\lib\\aspectjtools.jar",
+        "c:\\aspectj1.9\\lib\\aspectjweaver.jar"
     ]
 }
