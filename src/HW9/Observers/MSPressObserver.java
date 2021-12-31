@@ -1,10 +1,10 @@
-package HW9.Observers;
+package Observers;
 
 public class MSPressObserver implements Observer {
 
     MonitoringScreen screen;
 
-    public public MSPressObserver(MonitoringScreen screen) {
+    public MSPressObserver(MonitoringScreen screen) {
         this.screen = screen;
     }
 

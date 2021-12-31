@@ -1,6 +1,5 @@
-package HW9.Observers;
+package Observers;
 
 public interface Observer {
-
     public void update(int data);
 }

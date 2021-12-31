@@ -1,4 +1,4 @@
-package WS1.StudentCode;
+package Nimbus1;
 
 import java.util.Random;
 

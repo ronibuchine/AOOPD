@@ -1,6 +1,8 @@
-package HW9.Observables;
+package Observables;
 
-public class PressureTrendSensor {
+import Nimbus1.Nimbus1PressureSensor;
+
+public class PressureTrendSensor extends Observable {
     // saves the last three times the pressure changes and tells us if it is rising
     // falling or stable
     int mostRecent;
@@ -11,22 +13,25 @@ public class PressureTrendSensor {
     Trend lastState;
 
     public enum Trend {
-        rising, falling, stable
+        RISING, FALLING, STABLE
     };
 
     public Trend calc() {
         if (mostRecent > secondMostRecent && secondMostRecent > thirdMostRecent)
-            return rising;
+            return Trend.RISING;
         if (mostRecent < secondMostRecent && secondMostRecent < thirdMostRecent)
-            return falling;
-        return stable;
+            return Trend.FALLING;
+        return Trend.STABLE;
     }
 
     public void check() {
-        read();
+        Trend trend = calc();
+        if (trend != lastState)
+            notifyObservers(trend.ordinal());
+        lastState = trend;
     }
 
-    public int update() {
-        return 0;
+    public void update(int data) {
+        check();
     }
 }

@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
-        "src"
+        "src",
+        "src\\HW9"
     ],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",

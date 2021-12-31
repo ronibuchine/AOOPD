@@ -1,4 +1,4 @@
-package HW9.Observables;
+package Observables;
 
 public abstract class Sensor extends Observable {
 
@@ -9,6 +9,7 @@ public abstract class Sensor extends Observable {
     public Sensor(String type, int interval) {
         this.type = type;
         this.interval = interval;
+        (AlarmClock.theInstance()).register(interval, new SensorAlarmListener(this));
     }
 
     protected abstract int read();
@@ -16,7 +17,7 @@ public abstract class Sensor extends Observable {
     public void check() {
         int temp = read();
         if (lastReading != temp) {
-            lastReading = tmep;
+            lastReading = temp;
             notifyObservers(lastReading);
         }
     }

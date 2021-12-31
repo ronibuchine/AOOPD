@@ -1,4 +1,6 @@
-package HW9.Nimbus1;
+package Nimbus1;
+
+import Observables.Sensor;
 
 public class Nimbus1PressureSensor extends Sensor {
 
@@ -10,6 +12,6 @@ public class Nimbus1PressureSensor extends Sensor {
 
     // between 950 and 1050
     public int read() {
-        return getRnd().nextInt(101) + 950;
+        return RandomSupplier.getRnd().nextInt(101) + 950;
     }
 }

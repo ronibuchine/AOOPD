@@ -1,7 +1,7 @@
-package WS1.StudentCode;
+package Observables;
 
-import WS1.Observables.AlarmClockRecord;
-import WS1.Observables.AlarmListener;
+import Observables.AlarmClockRecord;
+import Observables.AlarmListener;
 
 import java.util.ArrayList;
 
@@ -14,17 +14,24 @@ public class AlarmClock
     protected AlarmClock() {}
     public static AlarmClock theInstance()
     {
-        if(null==instance)
+        if (null==instance)
             instance = new AlarmClock();
         return instance;
     }
 
-    protected void tic(){
-        //TODO: fix
+    protected void tic() {    
+        for (AlarmClockRecord record: itsAlarmClockRecords) {        
+            if (record.remainingTime() - CLOCK_INTERVAL_MILLIS <= 0) {
+                record.getListener().wakeup();         
+                record.setRemainingTime(record.getInterval());       
+            }        
+            else 
+                record.decrementRemainingTime(CLOCK_INTERVAL_MILLIS);
+            }
     }
 
     public void register(int interval, AlarmListener pal) {
-        //TODO: fix
+        itsAlarmClockRecords.add(new AlarmClockRecord(interval, pal));
     }
 }
 

@@ -1,22 +1,23 @@
-package HW9.Observables;
+package Observables;
 
-import HW9.Observers.Observer;
+import java.util.List;
+import Observers.Observer;
 
 public class Observable {
 
     List<Observer> observers;
 
     public void addObserver(Observer observer) {
-        observers.Add(observer);
+        observers.add(observer);
     }
 
     public void notifyObservers(int data) {
-        for (Obsrever observer : observers) {
+        for (Observer observer : observers) {
             observer.update(data);
         }
     }
 
-    public removeObserver(Observer observer) {
+    public void removeObserver(Observer observer) {
         observers.remove(observer);
     }
 }

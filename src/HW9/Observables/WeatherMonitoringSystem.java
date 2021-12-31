@@ -1,4 +1,4 @@
-package HW9.Observables;
+package Observables;
 
 public class WeatherMonitoringSystem {
 
