@@ -24,8 +24,4 @@ public abstract class Sensor extends Observable {
             notifyObservers(lastReading);
         }
     }
-
-    public String getType() {
-        return type;
-    }
 }
