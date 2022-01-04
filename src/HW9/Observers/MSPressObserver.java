@@ -5,7 +5,7 @@ public class MSPressObserver implements Observer {
     private MonitoringScreen screen;
 
     public MSPressObserver(MonitoringScreen screen) {
-        System.out.println(getClass().getName() + " was created");
+        System.out.println("MSPressObserver was created");
         this.screen = screen;
     }
 

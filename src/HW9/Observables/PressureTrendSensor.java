@@ -19,7 +19,7 @@ public class PressureTrendSensor extends Observable implements Observer {
 
     public PressureTrendSensor(Nimbus1PressureSensor pressSensor) {
         pressSensor.addObserver(this);
-        System.out.println(getClass().getName() + " observes " + pressSensor.getType());
+        System.out.println("PressureTrendSensor observes " + pressSensor.getType());
     }
 
     public Trend calc() {
