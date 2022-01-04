@@ -2,7 +2,7 @@ package Observables;
 
 public abstract class Sensor extends Observable {
 
-    int lastReading;
+    int lastReading = 0;
     int interval;
     String type;
 
@@ -15,9 +15,9 @@ public abstract class Sensor extends Observable {
     protected abstract int read();
 
     public void check() {
-        int temp = read();
-        if (lastReading != temp) {
-            lastReading = temp;
+        int val = read();
+        if (lastReading != val) {
+            lastReading = val;
             notifyObservers(lastReading);
         }
     }

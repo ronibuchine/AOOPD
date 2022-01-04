@@ -1,11 +1,19 @@
 package Observers;
 
 import Observables.PressureTrendSensor;
+import Observables.WeatherMonitoringSystem;
 import Observables.PressureTrendSensor.Trend;
 import Nimbus1.Nimbus1PressureSensor;
 
 
 public class Log {
+
+    WeatherMonitoringSystem ws;
+
+    public Log(WeatherMonitoringSystem ws) {
+        this.ws = ws;
+    }
+
     public Log(Nimbus1PressureSensor pressureSensor) {
         pressureSensor.addObserver(new LogPressObserver(this));
     }

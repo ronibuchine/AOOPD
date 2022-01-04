@@ -1,10 +1,11 @@
 package Nimbus1;
 
+import java.util.Random;
 import Observables.Sensor;
 
 public class Nimbus1TemperatureSensor extends Sensor {
 
-    int rnd;
+    Random rnd;
 
     public Nimbus1TemperatureSensor(String type, int interval) {
         super(type, interval);
@@ -12,7 +13,8 @@ public class Nimbus1TemperatureSensor extends Sensor {
 
     // between 0 and 40
     public int read() {
-        return RandomSupplier.getRnd().nextInt(41);
+        rnd = RandomSupplier.getRnd();
+        return rnd.nextInt(41);
     }
 
 }
