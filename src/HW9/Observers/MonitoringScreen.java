@@ -1,7 +1,5 @@
 package Observers;
 
-import Nimbus1.Nimbus1PressureSensor;
-import Nimbus1.Nimbus1TemperatureSensor;
 import Observables.WeatherMonitoringSystem;
 
 public class MonitoringScreen {
@@ -10,14 +8,8 @@ public class MonitoringScreen {
 
     public MonitoringScreen(WeatherMonitoringSystem ws) {
         this.ws = ws;
-    }
-
-    public MonitoringScreen(Nimbus1TemperatureSensor tempSensor) {
-        tempSensor.addObserver(new MSTempObserver(this));
-    }
-
-    public MonitoringScreen(Nimbus1PressureSensor pressureSensor) {
-        pressureSensor.addObserver(new MSPressObserver(this));
+        ws.addTempObserver(new MSTempObserver(this));
+        ws.addPressObserver(new MSPressObserver(this));
     }
 
     public void displayTemperature(int data) {

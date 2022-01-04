@@ -12,6 +12,7 @@ public class Nimbus1PressureSensor extends Sensor {
     }
 
     // between 950 and 1050
+    @Override
     public int read() {
         rnd = RandomSupplier.getRnd();
         return rnd.nextInt(101) + 950;

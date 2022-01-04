@@ -1,8 +1,9 @@
 package Observables;
 
 import Nimbus1.Nimbus1PressureSensor;
+import Observers.Observer;
 
-public class PressureTrendSensor extends Observable {
+public class PressureTrendSensor extends Observable implements Observer {
     // saves the last three times the pressure changes and tells us if it is rising
     // falling or stable
     int mostRecent;
@@ -15,6 +16,10 @@ public class PressureTrendSensor extends Observable {
     public enum Trend {
         RISING, FALLING, STABLE
     };
+
+    public PressureTrendSensor(Nimbus1PressureSensor pressSensor) {
+        pressSensor.addObserver(this);
+    }
 
     public Trend calc() {
         if (mostRecent > secondMostRecent && secondMostRecent > thirdMostRecent)

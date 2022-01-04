@@ -1,11 +1,11 @@
 package Observables;
 
-import java.util.List;
+import java.util.ArrayList;
 import Observers.Observer;
 
 public class Observable {
 
-    List<Observer> observers;
+    private ArrayList<Observer> observers = new ArrayList<Observer>();
 
     public void addObserver(Observer observer) {
         observers.add(observer);
