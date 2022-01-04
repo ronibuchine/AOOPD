@@ -4,9 +4,10 @@ import Observables.WeatherMonitoringSystem;
 
 public class MonitoringScreen {
 
-    WeatherMonitoringSystem ws;
+    private WeatherMonitoringSystem ws;
 
     public MonitoringScreen(WeatherMonitoringSystem ws) {
+        System.out.println(getClass().getName() + " was created");
         this.ws = ws;
         ws.addTempObserver(new MSTempObserver(this));
         ws.addPressObserver(new MSPressObserver(this));

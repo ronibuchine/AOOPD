@@ -2,7 +2,7 @@ package Observables;
 
 public class SensorAlarmListener implements AlarmListener {
 
-    Sensor sensor;
+    private Sensor sensor;
 
     public SensorAlarmListener(Sensor sensor) {
         this.sensor = sensor;
@@ -12,4 +12,7 @@ public class SensorAlarmListener implements AlarmListener {
         sensor.check();
     }
 
+    public Sensor getSensor() {
+        return sensor;
+    }
 }

@@ -6,9 +6,10 @@ import Observables.PressureTrendSensor.Trend;
 
 public class Log {
 
-    WeatherMonitoringSystem ws;
+    private WeatherMonitoringSystem ws;
 
     public Log(WeatherMonitoringSystem ws) {
+        System.out.println(getClass().getName() + " was created");
         this.ws = ws;
         ws.addPressObserver(new LogPressObserver(this));
         ws.addPressTrendObserver(new LogPressTrendObserver(this));

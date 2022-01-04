@@ -5,7 +5,7 @@ import Observables.Sensor;
 
 public class Nimbus1PressureSensor extends Sensor {
 
-    Random rnd;
+    private Random rnd;
 
     public Nimbus1PressureSensor(String type, int interval) {
         super(type, interval);

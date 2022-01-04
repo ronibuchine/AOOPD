@@ -2,9 +2,10 @@ package Observers;
 
 public class MSPressObserver implements Observer {
 
-    MonitoringScreen screen;
+    private MonitoringScreen screen;
 
     public MSPressObserver(MonitoringScreen screen) {
+        System.out.println(getClass().getName() + " was created");
         this.screen = screen;
     }
 

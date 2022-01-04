@@ -6,12 +6,12 @@ import Observers.Observer;
 public class PressureTrendSensor extends Observable implements Observer {
     // saves the last three times the pressure changes and tells us if it is rising
     // falling or stable
-    int mostRecent;
-    int secondMostRecent;
-    int thirdMostRecent;
-
-    Trend pressureState;
-    Trend lastState;
+    private int mostRecent;
+    private int secondMostRecent;
+    private int thirdMostRecent;
+    private String type = "pressure trend";
+    private Trend pressureState;
+    private Trend lastState;
 
     public enum Trend {
         RISING, FALLING, STABLE
@@ -19,6 +19,7 @@ public class PressureTrendSensor extends Observable implements Observer {
 
     public PressureTrendSensor(Nimbus1PressureSensor pressSensor) {
         pressSensor.addObserver(this);
+        System.out.println(getClass().getName() + " observes " + pressSensor.getType());
     }
 
     public Trend calc() {
@@ -30,13 +31,22 @@ public class PressureTrendSensor extends Observable implements Observer {
     }
 
     public void check() {
-        Trend trend = calc();
-        if (trend != lastState)
-            notifyObservers(trend.ordinal());
-        lastState = trend;
+        pressureState = calc();
+        if (pressureState != lastState) {
+            lastState = pressureState;
+            notifyObservers(pressureState.ordinal());
+        }
+        
     }
 
     public void update(int data) {
+        thirdMostRecent = secondMostRecent;
+        secondMostRecent = mostRecent;
+        mostRecent = data;
         check();
+    }
+
+    public String getType() {
+        return type;
     }
 }

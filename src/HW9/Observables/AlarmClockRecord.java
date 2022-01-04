@@ -1,9 +1,9 @@
 package Observables;
 
 public class AlarmClockRecord {
-    int interval;
-    int remainingTime;
-    AlarmListener alarmListener;
+    private int interval;
+    private int remainingTime;
+    private AlarmListener alarmListener;
 
     public AlarmClockRecord(int interval, AlarmListener alarmListener) {  
         remainingTime = this.interval = interval;   

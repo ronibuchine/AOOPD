@@ -1,15 +1,18 @@
 package Observables;
 
+import Nimbus1.Nimbus1Clock;
+
 public abstract class Sensor extends Observable {
 
-    int lastReading = 0;
-    int interval;
-    String type;
+    private int lastReading = 0;
+    private int interval;
+    private String type;
 
     public Sensor(String type, int interval) {
         this.type = type;
         this.interval = interval;
-        (AlarmClock.theInstance()).register(interval, new SensorAlarmListener(this));
+        (Nimbus1Clock.theInstance()).register(interval, new SensorAlarmListener(this));
+        System.out.println(type + " registered to clock");
     }
 
     protected abstract int read();
@@ -20,5 +23,9 @@ public abstract class Sensor extends Observable {
             lastReading = val;
             notifyObservers(lastReading);
         }
+    }
+
+    public String getType() {
+        return type;
     }
 }

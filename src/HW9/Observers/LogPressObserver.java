@@ -2,9 +2,10 @@ package Observers;
 
 public class LogPressObserver implements Observer {
 
-    Log log;
+    private Log log;
 
     public LogPressObserver(Log log) {
+        System.out.println(getClass().getName() + " was created");
         this.log = log;
     }
 

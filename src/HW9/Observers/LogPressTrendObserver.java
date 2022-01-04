@@ -2,9 +2,10 @@ package Observers;
 
 public class LogPressTrendObserver implements Observer {
 
-    Log log;
+    private Log log;
 
     public LogPressTrendObserver(Log log) {
+        System.out.println(getClass().getName() + " was created");
         this.log = log;
     }
 
