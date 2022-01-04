@@ -45,8 +45,4 @@ public class PressureTrendSensor extends Observable implements Observer {
         mostRecent = data;
         check();
     }
-
-    public String getType() {
-        return type;
-    }
 }
