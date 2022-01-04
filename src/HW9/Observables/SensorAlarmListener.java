@@ -11,8 +11,4 @@ public class SensorAlarmListener implements AlarmListener {
     public void wakeup() {
         sensor.check();
     }
-
-    public Sensor getSensor() {
-        return sensor;
-    }
 }
