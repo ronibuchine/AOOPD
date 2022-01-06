@@ -1,10 +1,11 @@
-package HW9.Observers;
+//package Observers;
 
 public class MSTempObserver implements Observer {
 
-    MonitoringScreen screen;
+    private MonitoringScreen screen;
 
-    public public MSTempObserver(MonitoringScreen screen) {
+    public MSTempObserver(MonitoringScreen screen) {
+        System.out.println("MSTempObserver was created");
         this.screen = screen;
     }
 

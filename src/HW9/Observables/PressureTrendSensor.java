@@ -1,32 +1,47 @@
-package HW9.Observables;
+//package Observables;
 
-public class PressureTrendSensor {
+//import Observers.Observer;
+
+public class PressureTrendSensor extends Observable implements Observer {
     // saves the last three times the pressure changes and tells us if it is rising
     // falling or stable
-    int mostRecent;
-    int secondMostRecent;
-    int thirdMostRecent;
-
-    Trend pressureState;
-    Trend lastState;
+    private int mostRecent = 0;
+    private int secondMostRecent = 0;
+    private int thirdMostRecent = 0;
+    private String type = "pressure trend";
+    private Trend pressureState;
+    private Trend lastState = Trend.STABLE;
 
     public enum Trend {
-        rising, falling, stable
+        RISING, FALLING, STABLE
     };
+
+    public PressureTrendSensor(Sensor pressSensor) {
+        pressSensor.addObserver(this);
+        System.out.println("PressureTrendSensor observes pressure");
+    }
 
     public Trend calc() {
         if (mostRecent > secondMostRecent && secondMostRecent > thirdMostRecent)
-            return rising;
+            return Trend.RISING;
         if (mostRecent < secondMostRecent && secondMostRecent < thirdMostRecent)
-            return falling;
-        return stable;
+            return Trend.FALLING;
+        return Trend.STABLE;
     }
 
     public void check() {
-        read();
+        pressureState = calc();
+        if (thirdMostRecent != 0) {
+            lastState = pressureState;
+            notifyObservers(pressureState.ordinal());
+        }
+        
     }
 
-    public int update() {
-        return 0;
+    public void update(int data) {
+        thirdMostRecent = secondMostRecent;
+        secondMostRecent = mostRecent;
+        mostRecent = data;
+        check();
     }
 }

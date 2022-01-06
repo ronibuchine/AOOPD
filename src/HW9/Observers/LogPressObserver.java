@@ -1,10 +1,11 @@
-package HW9.Observers;
+//package Observers;
 
 public class LogPressObserver implements Observer {
 
-    Log log;
+    private Log log;
 
-    public public LogPressTrendObserver(Log log) {
+    public LogPressObserver(Log log) {
+        System.out.println("LogPressObserver was created");
         this.log = log;
     }
 

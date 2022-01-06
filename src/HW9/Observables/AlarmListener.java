@@ -1,5 +1,5 @@
-package HW9.Observables;
+//package Observables;
 
 public interface AlarmListener {
-
+    public void wakeup();
 }

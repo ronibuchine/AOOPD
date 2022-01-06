@@ -1,21 +1,21 @@
-package HW9.Nimbus1;
+//package Nimbus1;
 
-import HW9.Observables.Sensor;
-import WS1.StudentCode.AlarmClock;
+import java.util.Random;
+//import Observables.Sensor;
 
 public class Nimbus1TemperatureSensor extends Sensor {
 
-    int rnd;
-
-    // between 0 and 40
+    private Random rnd;
 
     public Nimbus1TemperatureSensor(String type, int interval) {
         super(type, interval);
     }
 
+    // between 0 and 40
+    @Override
     public int read() {
-        return getRnd().nextInt(41);
-        AlarmClock.theInstance();
+        rnd = RandomSupplier.getRnd();
+        return rnd.nextInt(40);
     }
 
 }

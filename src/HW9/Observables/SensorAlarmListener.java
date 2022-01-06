@@ -1,5 +1,14 @@
-package HW9.Observables;
+//package Observables;
 
-public class SensorAlarmListener {
+public class SensorAlarmListener implements AlarmListener {
 
+    private Sensor sensor;
+
+    public SensorAlarmListener(Sensor sensor) {
+        this.sensor = sensor;
+    }
+
+    public void wakeup() {
+        sensor.check();
+    }
 }

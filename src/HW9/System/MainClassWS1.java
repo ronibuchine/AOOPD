@@ -1,8 +1,8 @@
-package WS1.StudentCode;
+//package System;
 
-import WS1.Observables.WeatherMonitoringSystem;
-import WS1.Observers.Log;
-import WS1.Observers.MonitoringScreen;
+import Observables.WeatherMonitoringSystem;
+import Observers.Log;
+import Observers.MonitoringScreen;
 
 public class MainClassWS1
 {
