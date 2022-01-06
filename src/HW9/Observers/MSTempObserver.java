@@ -1,4 +1,4 @@
-package Observers;
+//package Observers;
 
 public class MSTempObserver implements Observer {
 

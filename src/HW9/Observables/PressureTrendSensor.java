@@ -1,7 +1,7 @@
-package Observables;
+//package Observables;
 
-import Nimbus1.Nimbus1PressureSensor;
-import Observers.Observer;
+//import Nimbus1.Nimbus1PressureSensor;
+//import Observers.Observer;
 
 public class PressureTrendSensor extends Observable implements Observer {
     // saves the last three times the pressure changes and tells us if it is rising
@@ -32,7 +32,7 @@ public class PressureTrendSensor extends Observable implements Observer {
 
     public void check() {
         pressureState = calc();
-        if (pressureState != lastState) {
+        if (thirdMostRecent != 0) {
             lastState = pressureState;
             notifyObservers(pressureState.ordinal());
         }

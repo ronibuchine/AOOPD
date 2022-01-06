@@ -1,7 +1,7 @@
-package Observers;
+//package Observers;
 
-import Observables.WeatherMonitoringSystem;
-import Observables.PressureTrendSensor.Trend;
+//import Observables.WeatherMonitoringSystem;
+//import Observables.PressureTrendSensor.Trend;
 
 
 public class Log {
@@ -22,6 +22,6 @@ public class Log {
     }
 
     public void logPressureTrend(int data) {
-        System.out.println("Log: pressure trend = " + Trend.values()[data]);
+        System.out.println("Log: pressure trend = " + PressureTrendSensor.Trend.values()[data]);
     }
 }

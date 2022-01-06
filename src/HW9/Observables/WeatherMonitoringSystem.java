@@ -1,8 +1,8 @@
-package Observables;
+//package Observables;
 
-import Nimbus1.Nimbus1PressureSensor;
-import Nimbus1.Nimbus1TemperatureSensor;
-import Observers.Observer;
+//import Nimbus1.Nimbus1PressureSensor;
+//import Nimbus1.Nimbus1TemperatureSensor;
+//import Observers.Observer;
 
 public class WeatherMonitoringSystem {
 

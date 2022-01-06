@@ -1,7 +1,7 @@
-package Nimbus1;
+//package Nimbus1;
 
 import java.util.Random;
-import Observables.Sensor;
+//import Observables.Sensor;
 
 public class Nimbus1PressureSensor extends Sensor {
 

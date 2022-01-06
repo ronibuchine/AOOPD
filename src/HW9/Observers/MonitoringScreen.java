@@ -1,6 +1,6 @@
-package Observers;
+//package Observers;
 
-import Observables.WeatherMonitoringSystem;
+//import Observables.WeatherMonitoringSystem;
 
 public class MonitoringScreen {
 

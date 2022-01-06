@@ -1,7 +1,7 @@
-package Observables;
+//package Observables;
 
 import java.util.ArrayList;
-import Observers.Observer;
+//import Observers.Observer;
 
 public class Observable {
 
