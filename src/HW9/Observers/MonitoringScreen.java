@@ -4,11 +4,8 @@
 
 public class MonitoringScreen {
 
-    private WeatherMonitoringSystem ws;
-
     public MonitoringScreen(WeatherMonitoringSystem ws) {
         System.out.println("MonitoringScreen was created");
-        this.ws = ws;
         ws.addTempObserver(new MSTempObserver(this));
         System.out.println("MSTempObserver observes temperature");
         ws.addPressObserver(new MSPressObserver(this));

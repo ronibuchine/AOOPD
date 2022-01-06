@@ -3,14 +3,10 @@
 //import Observables.WeatherMonitoringSystem;
 //import Observables.PressureTrendSensor.Trend;
 
-
 public class Log {
-
-    private WeatherMonitoringSystem ws;
 
     public Log(WeatherMonitoringSystem ws) {
         System.out.println("Log was created");
-        this.ws = ws;
         ws.addPressObserver(new LogPressObserver(this));
         System.out.println("LogPressObserver observes pressure");
         ws.addPressTrendObserver(new LogPressTrendObserver(this));

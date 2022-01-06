@@ -1,6 +1,5 @@
 //package Observables;
 
-//import Nimbus1.Nimbus1PressureSensor;
 //import Observers.Observer;
 
 public class PressureTrendSensor extends Observable implements Observer {
@@ -17,7 +16,7 @@ public class PressureTrendSensor extends Observable implements Observer {
         RISING, FALLING, STABLE
     };
 
-    public PressureTrendSensor(Nimbus1PressureSensor pressSensor) {
+    public PressureTrendSensor(Sensor pressSensor) {
         pressSensor.addObserver(this);
         System.out.println("PressureTrendSensor observes pressure");
     }

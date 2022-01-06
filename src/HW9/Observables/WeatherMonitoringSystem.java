@@ -6,8 +6,8 @@
 
 public class WeatherMonitoringSystem {
 
-    private Nimbus1PressureSensor pressSensor;
-    private Nimbus1TemperatureSensor tempSensor;
+    private Sensor pressSensor;
+    private Sensor tempSensor;
     private PressureTrendSensor pressTrendSensor;
 
     protected static WeatherMonitoringSystem instance = null;
